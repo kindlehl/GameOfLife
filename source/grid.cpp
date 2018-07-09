@@ -86,47 +86,35 @@ int Grid::neighborCount(int index){
 	if(index%cols == 0){
 		//The index hugs the left side of the grid
 		TL = -1;	//nullify
-		L = -1;
-		BL = -1;
+		L = -1;		//nullify
+		BL = -1;	//nullify
 	}
 	if(index%cols == cols-1){
 		//the index hugs the right side of the grid
-		TR = -1;
-		R = -1;
-		BR = -1;
+		TR = -1;	//nullify
+		R = -1;		//nullify
+		BR = -1;	//nullify
 
 	}
 
 	if(index/cols == 0){
 		//the index hugs the top of the grid
-		TL = -1;
-		TM = -1;
-		TR = -1;
+		TL = -1;	//nullify
+		TM = -1;	//nullify
+		TR = -1;	//nullify
 	}
 	if(index/cols == cols-1){
 		//the index hugs the bottom of the grid
-		BL = -1;
-		BM = -1;
-		BR = -1;
+		BL = -1;	//nullify
+		BM = -1;	//nullify
+		BR = -1;	//nullify
 	}
 	//increment the count for each valid neighbor that is alive
-	if(TL != -1 && creatures[TL].alive())
-		count++;
-	if(TR!= -1 && creatures[TR].alive())
-		count++;
-	if(TM != -1 && creatures[TM].alive())
-		count++;
-	if(BL != -1 && creatures[BL].alive())
-		count++;
-	if(L != -1 && creatures[L].alive())
-		count++;
-	if(R != -1 && creatures[R].alive())
-		count++;
-	if(BR != -1 && creatures[BR].alive())
-		count++;
-	if(BM != -1 && creatures[BM].alive())
-		count++;
+	std::array<int, 8> neighbors = {TL, TM, TR, R, BR, BM, BL, L};
 	
+	std::for_each(neighbors.begin(), neighbors.end(), [&] (int neighbor) {
+		count += (neighbor != -1 && creatures[neighbor].alive());
+	});
 	return count;
 }
 

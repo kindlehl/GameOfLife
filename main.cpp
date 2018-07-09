@@ -36,7 +36,7 @@ int main(){
 		window.draw(mainGrid);	
 			
 		window.display();
-		sf::sleep(sf::milliseconds(200));
+		sf::sleep(sf::milliseconds(30));
 	}
 }
 
