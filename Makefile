@@ -2,9 +2,6 @@ CC=g++
 NAME=GameOfLife
 CFLAGS=-std=c++14 -g 
 SFML = -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system 
-ALL= include/grid.h main.cpp source/grid.cpp grid.o
-SOURCES=source/grid.cpp main.cpp
-OBJECTS=$(SOURCES:.cpp=.o)
 
 ALL: $(NAME)
 
